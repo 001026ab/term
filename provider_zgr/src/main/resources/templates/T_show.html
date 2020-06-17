@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>springboot学习</title>
+    <script src="jquery.js"></script>
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script language="JavaScript">
+
+        /*   $(document).ready(function () {
+               $('#btn').click(function () {
+                   alert("进来了");
+                  var  username = $("#username").val();
+                   alert(username);
+                   location.href = '/test?name='+username;
+               });
+           });
+   */
+        /*  $(document).ready(function () {
+              $('#btn').click(function () {
+                  alert("进来了");
+                  var  username = $("#username").val();
+                  alert(username);
+                //  var json={name:username,number:"12",sex:"na"};
+                  var path= "/test";
+                  alert(path);
+                  $.ajax({
+                      url:path,
+                      type: "post",
+                      data : "name="+username,
+                      dataType: "json",
+                      success: function (data) {
+                           alter("sas");
+                      }
+                  });
+              });
+          });*/
+        /* function change1(){
+             var url="/test";
+             var  username = $("#username").val();
+             alert(username);
+             var myAjax = new Ajax.Request(url,{
+                 method:"post",
+                 parameters:"name="+username,
+                 onComplete:proprocessResponse,
+                 asynchronous:true
+             });
+         }
+         function proprocessResponse(request) {
+             var obj=JSON.parse(request.responseText);
+            // ${"tip2"}.innerHTML=obj.tip;//这里的tip就是jsonAction.java中返回的内容
+             /!*  alert(obj.tip);
+               alert(obj.tip == "ID不能为空！");*!/
+                  alert("sadas");
+         }*/
+
+        //获取循环输出的table表格数据并跳转页面
+        function lick(obj,id) {
+            var td_content = $(obj).parents("tr").children("td");  //获取当前行中的所有td值
+            var id = td_content.eq(0).text(); //获取当前行第一个td的值
+            var id2 = td_content.eq(1).text(); //获取当前行第二个td的值
+            //如果需要还可以 加第三。。。或更多的格子
+            //获取td下的input 值
+            //   var username=$(td_content.eq(0)).find("input").val();
+            //0就是每行第一个格子，1就是每行第二个格子
+            //location.href = '/test?name='+username;
+            location.href = '/deleteUser?id='+id;
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+<table border="1" id="tbList">
+    <tr>
+        <th>工号</th>
+        <th>姓名</th>
+        <th>类别</th>
+        <th>情况</th>
+        <th>审核</th>
+        <th>原因</th>
+        <th>操作</th>
+    </tr>
+
+    <tr th:each="item : ${listuser}">
+        <td style="display: none" th:text="${{item.id}}"></td><!--<input th:value="${{item.name}}" id="username" name="username"/>-->
+        <td th:text="${{item.t_number}}" id="t_number" name="t_number"></td>
+        <td th:text="${{item.t_name}}" id="t_name" name="t_name"></td>
+        <td th:text="${{item.t_type}}" id="t_type" name="t_type"></td>
+        <td th:text="${{item.t_exalp}}" id="t_exalp" name="t_exalp"></td>
+        <td th:text="${{item.t_approve}}" id="t_approve" name="t_approve"></td>
+        <td th:text="${{item.t_reason}}" id="t_reason" name="t_reason"></td>
+
+        <!--  <td><th:block th:text="${item.t_name}" /></td>
+          <td>[[${item.t_name}]] </td>
+          <td>[(${item.t_name})]</td>-->
+        <td><button  type="submit" id="btn" onclick="lick(this, this.id)">删除 </button></td>
+    </tr>
+</table>
+</body>
+</html>
