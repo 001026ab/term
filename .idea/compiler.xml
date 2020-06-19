@@ -9,16 +9,12 @@
         <module name="provider_zgr" />
         <module name="pdlcloud" />
         <module name="zgr" />
-        <module name="demo" />
+        <module name="stu_manage_lgm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="stu_manage_lgm" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo" options="-parameters" />
       <module name="pdlcloud" options="-parameters" />
       <module name="provider_zgr" options="-parameters" />
       <module name="stu_manage_lgm" options="-parameters" />
