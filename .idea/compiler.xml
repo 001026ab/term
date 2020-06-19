@@ -6,15 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="term" />
         <module name="provider_zgr" />
+        <module name="pdlcloud" />
+        <module name="zgr" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="stu_manage_lgm" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="pdlcloud" options="-parameters" />
       <module name="provider_zgr" options="-parameters" />
+      <module name="stu_manage_lgm" options="-parameters" />
       <module name="term" options="-parameters" />
+      <module name="zgr" options="-parameters" />
     </option>
   </component>
 </project>
