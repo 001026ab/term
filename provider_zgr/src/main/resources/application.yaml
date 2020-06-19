@@ -10,10 +10,10 @@ spring:
 #      prefix: /templates/
 #      suffix: .html
   datasource: #配置数据源四要素
-    url: jdbc:mysql://localhost:3306/book1?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/clouddemo?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: aa628713
-    driver-class-name: com.mysql.jdbc.Driver
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
 #    mvc:
 #      view:
 #        prefix: /webapp/WEB-INF/

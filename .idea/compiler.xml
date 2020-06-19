@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="provider_zgr" />
         <module name="pdlcloud" />
+        <module name="gateway" />
         <module name="zgr" />
         <module name="stu_manage_lgm" />
       </profile>
@@ -15,6 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gateway" options="-parameters" />
       <module name="pdlcloud" options="-parameters" />
       <module name="provider_zgr" options="-parameters" />
       <module name="stu_manage_lgm" options="-parameters" />

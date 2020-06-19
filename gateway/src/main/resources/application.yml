@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: host_route
+          uri: http://localhost:10000/lgm/allstu
+          predicates:
+            - Method=GET
