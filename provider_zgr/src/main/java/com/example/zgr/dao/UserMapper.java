@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserMapper {
      List<User> queryUser();
      int deleUser(int id);
+     int add(User user);
 }

@@ -6,6 +6,7 @@ import com.example.zgr.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,4 +66,20 @@ public class Provider_zgrController {
         return modelAndView;
 
     }
+    //增加数据页面
+    @RequestMapping("/addhtml")
+    public ModelAndView addhtml(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Add");//要跳转的页面
+        return modelAndView;
+    }
+    @PostMapping("/add")
+     public ModelAndView add(User user){
+         userService.add(user);
+         List<User> listuser=userService.queryAllUser();
+         ModelAndView modelAndView = new ModelAndView();
+         modelAndView.setViewName("T_show");//要跳转的页面
+         modelAndView.addObject("listuser", listuser);
+         return modelAndView;
+     }
 }

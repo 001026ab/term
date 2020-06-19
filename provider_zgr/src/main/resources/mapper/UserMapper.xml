@@ -7,4 +7,9 @@
     <delete id="deleUser">
         delete from t_thing where id=#{id}
     </delete>
+    <insert id="add" parameterType="com.example.zgr.model.User" >
+        insert into t_thing(t_number,t_name,t_type,t_exalp,t_approve)
+        values
+        (#{t_number},#{t_name},#{t_type},#{t_exalp},#{t_approve})
+    </insert>
 </mapper>
