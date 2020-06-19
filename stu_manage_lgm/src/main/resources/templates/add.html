@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>添加学生</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:insert="~{commons/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:insert="~{commons/commons::siderBar(flag='list.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+
+            <form class="form-horizontal" th:action="@{/lgm/doadd}" method="post">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">学生编号</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="studentNo" class="form-control" id="inputEmail2" value="1014">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">学生姓名</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="studentName" class="form-control" id="inputEmail3" value="小明">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="sex" class="form-control" id="inputPassword4" value="男">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">出生日期</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="birthday" class="form-control" id="inputPassword5" value="2020-02-02">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">民族</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="stdnative" class="form-control" id="inputEmail11" value="汉族">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">班级</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="classNo" class="form-control" id="inputPassword3" value="17软件一班" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">状态</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="stustatus" class="form-control" id="inputPassword6" value="在读" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">所在系</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="stuPart" class="form-control" id="inputPassword7" value="计算机系" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">提交</button>
+                </div>
+            </form>
+
+
+
+        </main>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lgmdemo.dao.studentinfoMapper">
+    <select id="allstu" resultType="lgmdemo.pojo.studentinfo">
+        select * from studentinfo
+    </select>
+
+    <insert id="doadd">
+        insert into studentinfo values (#{studentNo},#{studentName},#{sex},#{birthday},#{stdnative},#{classNo},#{stustatus},#{stuPart})
+    </insert>
+
+    <delete id="delstu" parameterType="int">
+        delete from studentinfo where studentNo=#{id}
+    </delete>
+
+    <select id="selectone" parameterType="int" resultType="lgmdemo.pojo.studentinfo">
+        select * from studentinfo where studentNo=#{id}
+    </select>
+
+    <update id="doupdate" parameterType="lgmdemo.pojo.studentinfo">
+        update studentinfo set studentName=#{studentName},sex=#{sex},birthday=#{birthday},
+                                stdnative=#{stdnative},classNo=#{classNo},stustatus=#{stustatus},
+                                stuPart=#{stuPart}
+        where studentNo=#{studentNo}
+    </update>
+</mapper>

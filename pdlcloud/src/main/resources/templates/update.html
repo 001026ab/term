@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>更新教师</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:insert="~{commons/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:insert="~{commons/commons::siderBar(flag='list.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+
+            <form class="form-horizontal" th:action="@{/pdl/doupdate}" method="post">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">教师编号</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="tid" class="form-control" id="inputEmail2" th:value="${updatelist.getTid()}" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">教师姓名</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="tname" class="form-control" id="inputEmail3" th:value="${updatelist.getTname()}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="tsex" class="form-control" id="inputPassword4" th:value="${updatelist.getTsex()}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">年龄</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="tage" class="form-control" id="inputPassword5" th:value="${updatelist.getTage()}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">住址</label>
+                    <div class="col-sm-12">
+                        <input type="text" name="taddress" class="form-control" id="inputEmail11" th:value="${updatelist.getTaddress()}">
+                    </div>
+                </div>
+                <div class="form-group" hidden>
+                    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-12">
+
+                        <input type="date" name="dirth" class="form-control" id="inputPassword3" placeholder="" >
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">确认修改</button>
+                </div>
+            </form>
+
+
+
+        </main>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>
