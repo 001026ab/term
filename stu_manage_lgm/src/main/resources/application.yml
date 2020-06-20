@@ -7,4 +7,4 @@ spring:
     name: stu-lgm
 
 server:
-  port: 12000
+  port: 10000
