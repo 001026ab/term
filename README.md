@@ -23,7 +23,7 @@
             <version>2.2.0.RELEASE</version>
         </dependency>
         
-5、启动你的服务
+5、参考pdlcloud或stu_manage_lgm项目中的application.yml文件，在自己项目中创建并配置；启动你的服务
 
 6、浏览器输入 127.0.0.1:8848/nacos 进入服务管理界面，在服务列表中即可看到你的服务
 
