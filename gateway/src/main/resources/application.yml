@@ -6,7 +6,11 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: host_route
-          uri: http://localhost:10000/lgm/allstu
+        - id: lgm-route
+          uri: lb://stu-lgm
           predicates:
-            - Method=GET
+            - Path=/lgm/**
+        - id: pdl-route
+          uri: lb://pdl-cloud
+          predicates:
+            - Path=/pdl/**
