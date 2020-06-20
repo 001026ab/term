@@ -12,4 +12,10 @@
         values
         (#{t_number},#{t_name},#{t_type},#{t_exalp},#{t_approve})
     </insert>
+    <select id="approve"  resultType="com.example.zgr.model.User">
+        select *  from  t_thing where t_approve=#{t_approve1} or t_approve=#{t_approve2}
+    </select>
+    <update id="up_approve">
+        update t_thing  set  t_approve=#{t_approve} where id =#{id}
+    </update>
 </mapper>

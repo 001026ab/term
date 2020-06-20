@@ -46,7 +46,6 @@ public class Provider_zgrController {
 
     }*/
 //查询数据
-
     @RequestMapping("/queryAllUser")
     public ModelAndView queryAllUser(){
         List<User> listuser=userService.queryAllUser();
@@ -66,20 +65,38 @@ public class Provider_zgrController {
         return modelAndView;
 
     }
-    //增加数据页面
+    //跳转到增加数据页面
     @RequestMapping("/addhtml")
     public ModelAndView addhtml(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("Add");//要跳转的页面
         return modelAndView;
     }
+    //增加数据
     @PostMapping("/add")
      public ModelAndView add(User user){
          userService.add(user);
-         List<User> listuser=userService.queryAllUser();
          ModelAndView modelAndView = new ModelAndView();
-         modelAndView.setViewName("T_show");//要跳转的页面
-         modelAndView.addObject("listuser", listuser);
+         modelAndView.setViewName("Add");//要跳转的页面
          return modelAndView;
      }
+    //查询审核
+    @RequestMapping("/approve")
+    public ModelAndView approve(){
+        List<User> listuser=userService.approve("待审核","审核不通过");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Approve");//要跳转的页面
+        modelAndView.addObject("listuser", listuser);
+        return  modelAndView;
+    }
+    //修改审核
+    @RequestMapping("/up_approve")
+    public ModelAndView up_approve(User user){
+        userService.up_approve(user.getT_approve(),user.getId());
+        List<User> listuser=userService.approve("待审核","审核不通过");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Approve");//要跳转的页面
+        modelAndView.addObject("listuser", listuser);
+        return  modelAndView;
+    }
 }

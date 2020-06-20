@@ -27,4 +27,14 @@ public class UserServiceImpl implements UserService {
     public int add(User user) {
         return userMapper.add(user);
     }
+
+    @Override
+    public List<User> approve(String t_approve1, String t_approve2) {
+        return userMapper.approve(t_approve1,t_approve2);
+    }
+
+    @Override
+    public int up_approve(String t_approve, int id) {
+        return userMapper.up_approve(t_approve,id);
+    }
 }
