@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>审核</title>
+    <script src="jquery.js"></script>
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        //获取循环输出的table表格数据并跳转页面
+        function lick(obj,id) {
+            var td_content = $(obj).parents("tr").children("td");  //获取当前行中的所有td值
+            var id = td_content.eq(0).text(); //获取当前行第一个td的值
+            location.href = '/up_approve?t_approve='+"审核通过"+'&id='+id;
+        }
+        function lick2(obj,id) {
+            var td_content = $(obj).parents("tr").children("td");  //获取当前行中的所有td值
+            var id = td_content.eq(0).text(); //获取当前行第一个td的值
+            location.href = '/up_approve?t_approve='+"审核不通过"+'&id='+id;
+        }
+    </script>
+</head>
+<body>
+<table border="1" id="tbList">
+    <tr>
+        <th>工号</th>
+        <th>姓名</th>
+        <th>类别</th>
+        <th>情况</th>
+        <th>审核</th>
+        <th>通过</th>
+        <th>不通过</th>
+    </tr>
+
+    <tr th:each="item : ${listuser}">
+        <td style="display: none" th:text="${{item.id}}"></td><!--<input th:value="${{item.name}}" id="username" name="username"/>-->
+        <td th:text="${{item.t_number}}" id="t_number" name="t_number"></td>
+        <td th:text="${{item.t_name}}" id="t_name" name="t_name"></td>
+        <td th:text="${{item.t_type}}" id="t_type" name="t_type"></td>
+        <td th:text="${{item.t_exalp}}" id="t_exalp" name="t_exalp"></td>
+        <td th:text="${{item.t_approve}}" id="t_approve" name="t_approve"></td>
+        <td><button  type="submit" id="btn1" onclick="lick(this, this.id)">审核通过 </button></td>
+        <td><button  type="submit" id="btn2" onclick="lick2(this, this.id)">审核不通过 </button></td>
+    </tr>
+</table>
+
+<ul>
+    <li> <a href="/zgr/queryAllUser">queryAllUser</a> </li></br>
+    <li> <a href="/zgr/addhtml">addhtml</a> </li></br>
+    <li> <a href="/zgr/up_approve">up_approve</a> </li></br>
+</ul>
+</body>
+</html>
