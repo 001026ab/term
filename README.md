@@ -16,7 +16,9 @@
     
     3、启动你想运行的项目
     
-    4、再浏览器输入127.0.0.1:8888/pdl/all 即可
+    4、在浏览器输入127.0.0.1:8888/pdl/all 即可
+    
+ ![Image text]https://github.com/001026ab/term/blob/master/img-example/example.PNG
 
 一、使用nacos实现服务的注册与发现
 
