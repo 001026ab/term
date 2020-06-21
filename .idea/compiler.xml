@@ -6,25 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo (1) (pdlcloud)" />
-        <module name="demo (2) (com.example)" />
+        <module name="demo" />
         <module name="gateway" />
-        <module name="pdlcloud" />
-        <module name="provider_zgr" />
         <module name="provider_zsw_pingjiao" />
+        <module name="pingjiao" />
+        <module name="provider_zgr" />
+        <module name="demo (1) (pdlcloud)" />
         <module name="stu_manage_lgm" />
+        <module name="demo (2) (com.example)" />
+        <module name="pdlcloud" />
         <module name="zgr" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="gateway" options="" />
+      <module name="demo" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="pdlcloud" options="-parameters" />
+      <module name="pingjiao" options="-parameters" />
       <module name="provider_zgr" options="-parameters" />
       <module name="stu_manage_lgm" options="-parameters" />
       <module name="term" options="" />
-      <module name="zgr" options="" />
+      <module name="zgr" options="-parameters" />
     </option>
   </component>
 </project>

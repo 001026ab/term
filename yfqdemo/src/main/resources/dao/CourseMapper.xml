@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yfqdemo.dao.CourseMapper">
+    <select id="allCourse" resultType="yfqdemo.pojo.Course">
+        select * from course
+    </select>
+
+    <insert id="doadd" parameterType="yfqdemo.pojo.Course">
+        insert into course value (#{cno},#{cname},#{tname},#{ctime})
+    </insert>
+
+    <delete id="delcourse" parameterType="string">
+        delete from course where cno=#{id}
+    </delete>
+
+    <select id="selectone" resultType="yfqdemo.pojo.Course">
+        select * from course where cno=#{id}
+    </select>
+
+    <update id="doupdate" parameterType="yfqdemo.pojo.Course">
+        update course set cname=#{cname},tname=#{tname},ctime=#{ctime} where cno=#{cno}
+    </update>
+</mapper>

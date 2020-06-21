@@ -13,6 +13,7 @@
         <module>pdlcloud</module>
         <module>provider_zgr</module>
         <module>gateway</module>
+        <module>yfqdemo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
