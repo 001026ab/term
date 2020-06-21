@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsw.pingjiao.dao.TeacherMapper" >
+    <resultMap id="BaseResultMap" type="com.zsw.pingjiao.pojo.Teacher" >
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="course" property="course" jdbcType="VARCHAR" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="zhuangtai" property="zhuangtai" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        name,course,id,zhuangtai
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+       SELECT 
+       <include refid="Base_Column_List" />
+	   FROM teacher
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+        SELECT
+         name,id
+        FROM teacher
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.zsw.pingjiao.pojo.TeacherFenShu" >
+       INSERT INTO
+       		teacherfenshu
+       		(name,a,b,c,d,e,f,g,h,i,j)
+       	VALUES
+       		(#{name}, #{a}, #{b},#{c},#{d},#{e},#{f},#{g},#{h},#{i},#{j})
+    </insert>
+
+    <update id="update" parameterType="java.lang.Integer" >
+        UPDATE
+        teacher
+        SET
+         zhuangtai = '已评教'
+        WHERE
+        id = #{id}
+    </update>
+</mapper>
