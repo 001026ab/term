@@ -1,16 +1,21 @@
 server:
   port: 8888
 
-
 spring:
+  application:
+    name: my-gateway
   cloud:
     gateway:
       routes:
+        - id: sty-route
+          uri: http://127.0.0.1:10000/css
+          predicates:
+            - Path=/css/**
         - id: lgm-route
-          uri: lb://stu-lgm
+          uri: http://127.0.0.1:10000/lgm             # lb://stu-lgm
           predicates:
             - Path=/lgm/**
         - id: pdl-route
-          uri: lb://pdl-cloud
+          uri: lb://pdl-cloud              #http://127.0.0.1:11000/pdl
           predicates:
             - Path=/pdl/**

@@ -10,16 +10,14 @@
 
 4、在项目中添加依赖
 
-	<dependency>
+	    <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>2.2.0.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>2.2.0.RELEASE</version>
         </dependency>
         
@@ -27,7 +25,7 @@
 
 6、浏览器输入 127.0.0.1:8848/nacos 进入服务管理界面，在服务列表中即可看到你的服务
 
-二、使用gateway网关
+二、使用spring cloud gateway网关
 
 1、进入geteway项目的application.yml 添加下面这段：
 
