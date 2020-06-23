@@ -27,7 +27,7 @@ public class adminController {
             return "admlogin";
         }else{
             model.addAttribute("tip","");
-            return "admin";
+            return "initAdmin";
         }
     }
 

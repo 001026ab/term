@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.text.AttributedString;
 import java.util.List;
 
 /**
@@ -21,30 +22,32 @@ public class TeacherController {
     @Resource
     TeacherService teacherService;
 
-    @RequestMapping("/")
+    @RequestMapping("/zsw")
     public String index() {
 
-        return "redirect:/main";
+        return "redirect:/zsw/main";
     }
 
-    @RequestMapping("/main")
+    @RequestMapping("/zsw/main")
     public String list(Model model) {
         List<Teacher> teacheres=teacherService.getTeacherList();
         model.addAttribute("teacheres", teacheres);
         return "teacher/main";
     }
 
-    @RequestMapping("/topj")
+    @RequestMapping("/zsw/topj")
     public String pj(Model model,Integer id) {
         Teacher teacher=teacherService.findUserById(id);
         model.addAttribute("teacher", teacher);
         return "teacher/pingjiaoshi";
     }
 
-    @RequestMapping("/add")
-    public String add(TeacherFenShu teacherFenShu,Integer id) {
+    @RequestMapping("/zsw/add")
+    public String add(TeacherFenShu teacherFenShu,Integer id,Model model) {
         teacherService.save(teacherFenShu);
         teacherService.update(id);
-        return "redirect:/main";
+        List<Teacher> teacheres=teacherService.getTeacherList();
+        model.addAttribute("teacheres", teacheres);
+        return "teacher/main";
     }
 }
