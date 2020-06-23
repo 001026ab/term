@@ -43,7 +43,7 @@
 							<tr  th:each="teacher : ${teacheres}">
 								<th scope="row" th:text="${teacher.name}">1</th>
 								<td th:text="${teacher.course}">neo</td>
-								<td><a th:href="@{/topj(id=${teacher.id})}">评教</a></td>
+								<td><a th:href="@{/zsw/topj(id=${teacher.id})}">评教</a></td>
 								<td class="text-danger" th:text="${teacher.zhuangtai}">n</td>
 							</tr>
 							</tbody>
