@@ -15,19 +15,19 @@
     <select id="getAll" resultMap="BaseResultMap"  >
        SELECT 
        <include refid="Base_Column_List" />
-	   FROM teacher
+	   FROM pingjiao
     </select>
 
     <select id="getOne" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
         SELECT
          name,id
-        FROM teacher
+        FROM pingjiao
         WHERE id = #{id}
     </select>
 
     <insert id="insert" parameterType="com.zsw.pingjiao.pojo.TeacherFenShu" >
        INSERT INTO
-       		teacherfenshu
+       		pjfenshu
        		(name,a,b,c,d,e,f,g,h,i,j)
        	VALUES
        		(#{name}, #{a}, #{b},#{c},#{d},#{e},#{f},#{g},#{h},#{i},#{j})
@@ -35,7 +35,7 @@
 
     <update id="update" parameterType="java.lang.Integer" >
         UPDATE
-        teacher
+        pingjiao
         SET
          zhuangtai = '已评教'
         WHERE
