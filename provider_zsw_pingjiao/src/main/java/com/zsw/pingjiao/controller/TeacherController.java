@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.text.AttributedString;
 import java.util.List;
 
 /**
@@ -42,9 +43,11 @@ public class TeacherController {
     }
 
     @RequestMapping("/zsw/add")
-    public String add(TeacherFenShu teacherFenShu,Integer id) {
+    public String add(TeacherFenShu teacherFenShu,Integer id,Model model) {
         teacherService.save(teacherFenShu);
         teacherService.update(id);
-        return "redirect:/zsw/main";
+        List<Teacher> teacheres=teacherService.getTeacherList();
+        model.addAttribute("teacheres", teacheres);
+        return "teacher/main";
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxc.grades.dao.GradeDao">
+
+    <resultMap id="grades" type="com.zxc.grades.model.Grade">
+        <id property="studentNo" column="studentNo"></id>
+        <id property="courseNo" column="courseNo"></id>
+        <id property="term" column="term"></id>
+        <id property="score" column="score"></id>
+    </resultMap>
+
+    <resultMap id="students" type="com.zxc.grades.model.StudentInfo">
+        <id property="studentNo" column="studentNo"></id>
+        <id property="studentName" column="studentName"></id>
+        <id property="classNo" column="classNo"></id>
+    </resultMap>
+
+    <resultMap id="baseResultMap" type="com.zxc.grades.model.StudentInfo">
+        <id property="studentNo" column="studentNo" javaType="Long"/>
+        <result property="studentName" column="studentName" javaType="String"/>
+        <result property="sex" column="sex" javaType="String"/>
+        <result property="classNo" column="classNo" javaType="String"/>
+        <association property="studentGrade" javaType="com.zxc.grades.model.Grade">
+            <id property="studentNo" column="studentNo" javaType="Long"></id>
+            <result property="courseNo" column="courseNo" javaType="String"></result>
+            <result property="term" column="term" javaType="String"></result>
+            <result property="score" column="score" javaType="Long"></result>
+        </association>
+    </resultMap>
+
+    <select id="queryAllStudentGrades" resultMap="baseResultMap">
+        select t.studentNo,t.studentName,t.classNo,t.sex,stg.term,stg.courseNo,stg.score
+        from tb_studentgrade stg
+        right JOIN
+        (select * from studentinfo where classNo=#{className}) as t
+        on t.studentNo=stg.studentNo
+        and courseNo=#{courseNo}
+    </select>
+
+    <select id="selectOne" resultMap="grades">
+        select * from tb_studentgrade
+        where studentNo=#{studentNo}
+        and courseNo=#{courseNo}
+    </select>
+    <select id="queryStudentInfoByStudentNo" resultMap="students">
+        select * from studentInfo
+        where studentNo=#{studentNo}
+    </select>
+
+    <delete id="deleteOne">
+        delete from tb_studentgrade where
+        studentNo=#{studentNo} and
+        courseNo=#{courseNo} and
+        score=#{score}
+    </delete>
+
+    <insert id="addGrade" parameterType="com.zxc.grades.dao.GradeDao" >
+        insert into tb_studentgrade(studentNo, courseNo,term,score) values (#{studentNo},#{courseNo},#{term},#{score})
+    </insert>
+
+    <update id="updateOne" parameterType="com.zxc.grades.dao.GradeDao">
+        update tb_studentgrade set score=#{score} where studentNo=#{studentNo}
+    </update>
+
+</mapper>

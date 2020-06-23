@@ -11,27 +11,44 @@ spring:
           uri: http://127.0.0.1:10000/css
           predicates:
             - Path=/css/**
+
         - id: lgm-route
           uri: lb://stu-lgm              # http://127.0.0.1:10000/lgm
           predicates:
             - Path=/lgm/**
+
         - id: pdl-route
           uri: lb://pdl-cloud              #http://127.0.0.1:11000/pdl
           predicates:
             - Path=/pdl/**
-        - id: sty-route
+
+        - id: yfq-route
           uri: lb://yfq-cloud
           predicates:
             - Path=/yfq/**
-        - id: sty-route
+
+        - id: zgr-route
           uri: lb://dept-zgr
           predicates:
             - Path=/zgr/**
-        - id: sty-route
+
+        - id: wd-route
+          uri: lb://wd-cloud
+          predicates:
+            - Path=/wd/**
+
+        - id: zxc-route
           uri: lb://provider-zxc
           predicates:
             - Path=/grade/**
-        - id: sty-route
+
+        - id: zsw-route
           uri: lb://zsw-pj
           predicates:
             - Path=/zsw/**
+
+        #static/plugins
+        - id: plugins-route
+          uri: http://127.0.0.1:13000/plugins/css
+          predicates:
+            - Path=/plugins/css/**

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <title>成绩管理</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<h1>学生成绩管理</h1>
+<div id="container" ng-app="provider_zxc" ng-controller="GradeController">
+    <ul class="nav nav-tabs">
+        <button class="btn btn-default" type="button"><a href="/pdl/all">返回</a></button>
+    </ul>
+
+
+<!--    <btn value="点击获取数据" onclick="getAllStudentGrade()" height="20px" width="20px"></btn>-->
+
+    <div class="dropdown" style="margin-top: 1%">
+        <table>
+            <thead>
+                <tr>
+                    <th><label>选择班级:</label></th>
+                    <th><label>选择科目:</label></th>
+                    <th><label>操作:</label></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <select ng-model="major" class="form-control" style="width: 100px;" autocomplete="off">
+                        <option>17软一</option>
+                        <option>17软二</option>
+                        <option>17物联网</option>
+                        <option>19商英一</option>
+                        <option>19社体四</option>
+                    </select></td>
+                <td>
+                    <select ng-model="course" class="form-control" style="width: 100px;" >
+                        <option>Java</option>
+                        <option>高等数学</option>
+                        <option>线性代数</option>
+                        <option>HTML网页设计</option>
+                        <option>大学英语</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-default" type="button" ng-click="getAllStudentGrade()" >查询</button>
+                </td>
+            </tr>
+
+
+            </tbody>
+
+
+
+
+
+
+        </table>
+
+
+
+    </div>
+
+    <div id="student_info">
+
+
+        <table id="QuerydataList" class="table table-bordered table-striped table-hover dataTable" style="margin-top: 5%;">
+            <thead>
+            <tr>
+                <th class="sorting_asc">学号</th>
+                <th class="sorting_asc">姓名</th>
+                <th class="sorting_asc">性别</th>
+                <th class="sorting_asc">班级</th>
+                <th class="sorting">课程</th>
+                <th class="sorting">学期</th>
+                <th class="sorting">分数</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in gradeInfo">
+                <td>{{entity.studentNo}}</td>
+                <td>{{entity.studentName}}</td>
+                <td>{{entity.sex}}</td>
+                <td>{{entity.classNo}}</td>
+                <td>{{entity.grade.courseNo}}</td>
+                <td>{{entity.grade.term}}</td>
+                <td>{{entity.grade.score}}</td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.studentNo,entity.grade.courseNo)"><i class="fa fa-file-o"></i> 新建</button>
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal2" ng-click="findTwo(entity.studentNo,entity.grade.courseNo)">修改</button>
+                    <button type="button" class="btn bg-olive btn-xs" ng-click="deleteOne(entity.studentNo,entity.grade.courseNo,entity.grade.score)" >删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+    <!-- 编辑窗口 -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">增加学生分数</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped"  width="800px">
+                        <tr>
+                            <td>学生姓名</td>
+                            <td><input  class="form-control" placeholder="学生姓名" ng-model="entity.studentName" disabled>  </td>
+                        </tr>
+                        <tr>
+                            <td>班级</td>
+                            <td><input  class="form-control" placeholder="班级" ng-model="entity.classNo" disabled>  </td>
+                        </tr>
+                        <tr>
+                            <td>科目</td>
+                            <td><input  class="form-control"  ng-model="entity.grade.courseNo" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>分数</td>
+                            <td><input  class="form-control" placeholder="分数" ng-model="entity.grade.score">  </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel2">修改学生成绩</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped"  width="800px">
+                        <tr>
+                            <td>学生姓名</td>
+                            <td><input  class="form-control" placeholder="学生姓名" ng-model="entity.studentName" disabled>  </td>
+                        </tr>
+                        <tr>
+                            <td>班级</td>
+                            <td><input  class="form-control" placeholder="班级" ng-model="entity.classNo" disabled>  </td>
+                        </tr>
+                        <tr>
+                            <td>科目</td>
+                            <td><input  class="form-control"  ng-model="entity.grade.courseNo" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>分数</td>
+                            <td><input  class="form-control" placeholder="分数" ng-model="entity.grade.score">  </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="modify()">保存</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" style="margin-top: 10%;background-color: #9acfea;height: 35px" >
+        <h4 style="text-align: center;color: red;">footer</h4>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    var app=angular.module('provider_zxc',[]);
+    app.controller('GradeController',function ($scope,$http){
+        var token = '&token=123'
+        //获取学生科目成绩
+        $scope.getAllStudentGrade = function () {
+            $http.get('http://localhost:8888/grade/showAllStudentGrades?className='+$scope.major+'&courseNo='+$scope.course+token).success(function (data) {
+                // alert($scope.major+'~~~~~~'+$scope.course);
+                $scope.gradeInfo=data;
+            })
+        }
+        //获取单个学生信息
+        $scope.findOne=function (studentNo,courseNo) {
+            if(courseNo!=$scope.course){
+                $http.get('http://localhost:8888/grade/findOne?studentNo='+studentNo+'&courseNo='+$scope.course+token).success(function (data) {
+                    $scope.entity=data;
+                })
+            }else{
+                alert("该学生已成绩，无需添加");
+            }
+
+        }
+        $scope.findTwo=function (studentNo,courseNo) {
+            if(courseNo==$scope.course){
+                $http.get('http://localhost:8888/grade/findOne?studentNo='+studentNo+'&courseNo='+$scope.course+token).success(function (data) {
+                    $scope.entity=data;
+                })
+            }else{
+                alert("该学生还没有分数");
+            }
+
+        }
+
+        //保存信息
+        $scope.save=function () {
+            $http.post('http://localhost:13000/grade/save?'+token,$scope.entity).success(function (data) {
+                    if(data.success){
+                        $scope.getAllStudentGrade();
+                        $scope.entity={};
+                        alert(data.message);
+                    }else{
+                        alert(data.message);
+                        $scope.entity={};
+                    }
+
+            })
+        }
+        $scope.modify=function () {
+            $http.post('http://localhost:13000/grade/updateOne?'+token,$scope.entity).success(function (data) {
+                if(data.success){
+                    $scope.getAllStudentGrade();
+                    $scope.entity={};
+                    alert(data.message);
+                }else{
+                    alert(data.message);
+                    $scope.entity={};
+                }
+
+            })
+        }
+
+
+        $scope.deleteOne=function(studentNo,courseNo,score){
+            $http.get('http://localhost:8888/grade/deleteOne?studentNo='+studentNo+'&courseNo='+courseNo+'&score='+score).success(function(data){
+                if (data.success){
+                    $scope.getAllStudentGrade();
+                    alert(data.message);
+                }else{
+                    alert(data.message);
+                }
+
+            });
+            // $scope.getAllStudentGrade();
+
+        }
+        $scope.clrEntity=function () {
+            $scope.entity={};
+        }
+
+    });
+
+
+
+</script>
+</body>
+</html>
