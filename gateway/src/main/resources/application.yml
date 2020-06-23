@@ -32,6 +32,8 @@ spring:
           predicates:
             - Path=/zgr/**
 
+
+
         - id: wd-route
           uri: lb://wd-cloud
           predicates:
@@ -46,6 +48,11 @@ spring:
           uri: lb://zsw-pj
           predicates:
             - Path=/zsw/**
+
+        - id: wjf-route
+            uri: lb://exam-wjf
+            predicates:
+            - Path=/wjf/**        #http://127.0.0.1:6003/wjf
 
         #static/plugins
         - id: plugins-route

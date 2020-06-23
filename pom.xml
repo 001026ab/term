@@ -16,6 +16,7 @@
         <module>yfqdemo</module>
         <module>provider_zxc</module>
         <module>wddemo</module>
+        <module>provider_wjf</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
