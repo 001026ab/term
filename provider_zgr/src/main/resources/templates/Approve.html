@@ -11,12 +11,12 @@
         function lick(obj,id) {
             var td_content = $(obj).parents("tr").children("td");  //获取当前行中的所有td值
             var id = td_content.eq(0).text(); //获取当前行第一个td的值
-            location.href = '/up_approve?t_approve='+"审核通过"+'&id='+id;
+            location.href = '/zgr/up_approve?t_approve='+"审核通过"+'&id='+id;
         }
         function lick2(obj,id) {
             var td_content = $(obj).parents("tr").children("td");  //获取当前行中的所有td值
             var id = td_content.eq(0).text(); //获取当前行第一个td的值
-            location.href = '/up_approve?t_approve='+"审核不通过"+'&id='+id;
+            location.href = '/zgr/up_approve?t_approve='+"审核不通过"+'&id='+id;
         }
     </script>
 </head>
@@ -39,15 +39,15 @@
         <td th:text="${{item.t_type}}" id="t_type" name="t_type"></td>
         <td th:text="${{item.t_exalp}}" id="t_exalp" name="t_exalp"></td>
         <td th:text="${{item.t_approve}}" id="t_approve" name="t_approve"></td>
-        <td><button  type="submit" id="btn1" onclick="lick(this, this.id)">审核通过 </button></td>
-        <td><button  type="submit" id="btn2" onclick="lick2(this, this.id)">审核不通过 </button></td>
+        <td><a th:href="@{'/zgr/up_approve?id='+${item.id}+'&t_approve='+'审核通过'}">审核通过</a><td>
+        <td><a th:href="@{'/zgr/up_approve?id='+${item.id}+'&t_approve='+'审核不通过'}">审核不通过</a><td>
     </tr>
 </table>
 
 <ul>
     <li> <a href="/zgr/queryAllUser">queryAllUser</a> </li></br>
     <li> <a href="/zgr/addhtml">addhtml</a> </li></br>
-    <li> <a href="/zgr/up_approve">up_approve</a> </li></br>
+    <li> <a href="/zgr/approve">approve</a> </li></br>
 </ul>
 </body>
 </html>

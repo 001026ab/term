@@ -27,3 +27,7 @@ spring:
           uri: lb://dept-zgr
           predicates:
             - Path=/zgr/**
+        - id: sty-route
+          uri: lb://provider-zxc
+          predicates:
+            - Path=/grade/**

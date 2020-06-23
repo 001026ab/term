@@ -14,6 +14,8 @@
         <module>provider_zgr</module>
         <module>gateway</module>
         <module>yfqdemo</module>
+        <module>provider_zxc</module>
+        <module>wddemo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

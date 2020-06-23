@@ -66,7 +66,7 @@
             //   var username=$(td_content.eq(0)).find("input").val();
             //0就是每行第一个格子，1就是每行第二个格子
             //location.href = '/test?name='+username;
-            location.href = '/deleteUser?id='+id;
+            location.href = '/zgr/deleteUser?id='+id;
         }
 
 
@@ -98,13 +98,13 @@
         <!--  <td><th:block th:text="${item.t_name}" /></td>
           <td>[[${item.t_name}]] </td>
           <td>[(${item.t_name})]</td>-->
-        <td><button  type="submit" id="btn" onclick="lick(this, this.id)">删除 </button></td>
+        <td><a th:href="@{'/zgr/deleteUser?id='+${item.id}}">删除 </button></a></td>
     </tr>
 </table>
 <ul>
     <li> <a href="/zgr/queryAllUser">queryAllUser</a> </li></br>
     <li> <a href="/zgr/addhtml">addhtml</a> </li></br>
-    <li> <a href="/zgr/up_approve">up_approve</a> </li></br>
+    <li> <a href="/zgr/approve">approve</a> </li></br>
 </ul>
 </body>
 </html>
