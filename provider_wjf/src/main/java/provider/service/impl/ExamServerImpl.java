@@ -20,8 +20,8 @@ public class ExamServerImpl implements ExamService {
         return examDao.findExam(classNo);
     }
     @Override
-    public List<ExamInfo> findAll(){
-        return  examDao.findAll();
+    public List<ExamInfo> findExams(){
+        return  examDao.findExams();
     }
 
     @Override

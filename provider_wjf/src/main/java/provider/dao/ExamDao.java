@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ExamDao {
     public List<ExamInfo> findExam(String classNo);
-    public List<ExamInfo> findAll();
+    public List<ExamInfo> findExams();
     public Integer insertExam(ExamInfo examInfo);
     public Integer updateExam(ExamInfo examInfo);
     public Integer deleteExam(Integer id);

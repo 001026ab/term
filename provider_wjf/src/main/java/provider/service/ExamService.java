@@ -11,5 +11,5 @@ public interface ExamService {
     public Result addExam(ExamInfo examInfo);
     public Result updateExam(ExamInfo examInfo);
     public Result deleteExam(Integer id);
-    public List<ExamInfo> findAll();
+    public List<ExamInfo> findExams();
 }

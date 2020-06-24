@@ -11,7 +11,7 @@
         <result property="place" column="place" javaType="String"/>
     </resultMap>
 
-    <select id="findAll" resultMap="baseResultMap">
+    <select id="findExams" resultMap="baseResultMap">
                 select * from examinfo
     </select>
     <select id="findExam" resultMap="baseResultMap" parameterType="String">

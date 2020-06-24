@@ -10,7 +10,7 @@ import provider.utils.Result;
 import java.util.List;
 
 @RestController
-@RequestMapping("/exam")
+
 public class ExamController {
 
 
@@ -21,7 +21,7 @@ public class ExamController {
 
 
 
-    @RequestMapping("/addexam")
+    @RequestMapping("wjf/addexam")
 
     public Result examadd(ExamInfo examInfo) {
         Result result = null;
@@ -31,7 +31,7 @@ public class ExamController {
         return result;
     }
 
-    @RequestMapping("/updateexam")
+    @RequestMapping("wjf/updateexam")
     public Result examupdate(ExamInfo examInfo) {
         examInfo=new ExamInfo(5,"66","66","66","66","66");
         Result result = null;
@@ -39,20 +39,20 @@ public class ExamController {
         return result;
     }
 
-    @RequestMapping("/findexam")
+    @RequestMapping("wjf/findexam")
     public List<ExamInfo> findexam(String classNo) {
 
         return  examService.findExam( classNo);
     }
 
 
-    @RequestMapping("/findall")
+    @RequestMapping("wjf/findall")
     public List<ExamInfo> findall() {
 
-        return  examService.findAll();
+        return  examService.findExams();
     }
 
-    @RequestMapping("/deleteexam")
+    @RequestMapping("wjf/deleteexam")
     public Result deleteexam(Integer id) {
         Result result = null;
         if (id <= 0)

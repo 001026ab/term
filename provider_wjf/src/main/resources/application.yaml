@@ -6,19 +6,24 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
+    password:
     url: jdbc:mysql://127.0.0.1:3306/clouddemo?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-    type: com.alibaba.druid.pool.DruidDataSource
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: provider.model
-  configuration:
-    map-underscore-to-camel-case: true
 
- cloud:
+  cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+
+  autoconfigure:
+    exclude: org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: provider.model  # 注意：对应实体类的路径
+
+
+
+
+
 
 #eureka:
   #client:
