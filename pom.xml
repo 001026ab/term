@@ -16,7 +16,7 @@
         <module>yfqdemo</module>
         <module>provider_zxc</module>
         <module>wddemo</module>
-        <module>provider_xq</module>
+        <module>provider_wjf</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -32,10 +32,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <dependencyManagement>

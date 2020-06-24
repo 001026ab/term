@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="provider.dao.ExamDao">
+    <resultMap id="baseResultMap" type="provider.model.ExamInfo">
+        <id property="id" column="id" javaType="int"/>
+        <result property="classNo" column="classNo" javaType="String"/>
+        <result property="course" column="course" javaType="String"/>
+        <result property="startime" column="startime" javaType="String"/>
+        <result property="endtime" column="endtime" javaType="String"/>
+        <result property="place" column="place" javaType="String"/>
+    </resultMap>
+
+    <select id="findExams" resultMap="baseResultMap">
+                select * from examinfo
+    </select>
+    <select id="findExam" resultMap="baseResultMap" parameterType="String">
+                select * from examinfo where classNo=#{classNo}
+    </select>
+    <insert id="insertExam" parameterType="provider.model.ExamInfo">
+        insert into examinfo(classNo,course,startime,endtime,place) values (#{classNo},#{course},#{startime},#{endtime},#{place})
+    </insert>
+    <update id="updateExam" parameterType="provider.model.ExamInfo">
+        update examinfo set classNo=#{classNo},course=#{course},startime=#{startime} ,endtime=#{endtime},place=#{place} where id=#{id}
+    </update>
+    <delete id="deleteExam" parameterType="Integer">
+        delete from examinfo where id=#{id}
+    </delete>
+
+</mapper>
