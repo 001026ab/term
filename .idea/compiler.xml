@@ -7,27 +7,41 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="provider_zsw_pingjiao" />
+        <module name="pingjiao" />
         <module name="demo" />
         <module name="gateway" />
-        <module name="provider_zsw_pingjiao" />
-        <module name="provider_zxc" />
-        <module name="provider_zgr" />
-        <module name="demo (1) (pdlcloud)" />
         <module name="stu_manage_lgm" />
-        <module name="wddemo" />
-        <module name="demo (2) (com.example)" />
         <module name="pdlcloud" />
-        <module name="pingjiao" />
+        <module name="wddemo" />
+        <module name="provider_zgr" />
+        <module name="demo (2) (com.example)" />
+        <module name="demo (4)" />
+        <module name="provider_zxc" />
+        <module name="provider_xq" />
+        <module name="demo (2) (provider_zxc)" />
         <module name="zgr" />
+        <module name="demo (1) (pdlcloud)" />
+      </profile>
+      <profile name="Annotation profile for term" enabled="true">
+        <sourceOutputDir name="../yfqdemo/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../yfqdemo/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo (3)" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
+      <module name="demo (1) (pdlcloud)" options="-parameters" />
+      <module name="demo (2) (provider_zxc)" options="-parameters" />
+      <module name="demo (3)" options="-parameters" />
+      <module name="demo (4)" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="pdlcloud" options="-parameters" />
       <module name="pingjiao" options="-parameters" />
+      <module name="provider_xq" options="-parameters" />
       <module name="provider_zgr" options="-parameters" />
       <module name="provider_zxc" options="-parameters" />
       <module name="stu_manage_lgm" options="-parameters" />
