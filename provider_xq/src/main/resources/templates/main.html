@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <title>学生个人信息管理</title>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+
+</head>
+<body>
+<h1>学生个人信息管理</h1>
+<div id="container" ng-app="son1" ng-controller="studentController">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active" onclick="change_div(base)"><a href="#"  target="_self" >个人基本信息</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+
+<br/>
+<!--    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="findBYID()">保存</button>-->
+
+<div id="base" align="center" >
+    <a href="" class="btn btn-primary btn-lg active" role="button" data-target="center" ng-click="findBYID()" id="look">点击查看</a>
+    <button class="btn btn-primary btn-lg active" role="button" data-toggle="modal" data-target="#editModal2">增加补录信息</button>
+    <button class="btn btn-primary btn-lg active" role="button" data-toggle="modal" data-target="#editModal3">查看补录信息</button>
+
+<!--    <button class="btn btn-success"  aria-hidden="true" ng-click="findBYID()">jjjj</button>-->
+
+    <div id="showselect" style="display: none">
+    <table align="center">
+
+        <fieldset>
+
+<!--            <input  class="form-control" placeholder="分数" ng-model="baseinfo.data.studentNo">-->
+
+            <label for="id">学号：</label>
+            <input type="text" id="id" class="id" ng-model="baseinfo.data.studentNo" placeholder="Disabled input" disabled><br/>
+
+
+            <label for="name">姓名：</label>
+            <input id="name" class="name" type="text" ng-model="baseinfo.data.studentName" disabled ><br/>
+
+            <label for="sex">性别：</label>
+            <input id="sex" class="sex" type="text" ng-model="baseinfo.data.sex" disabled ><br/>
+
+            <label for="birthday">生日：</label>
+            <input id="birthday" class="birthday" ng-model="baseinfo.data.birthday" type="text" placeholder="Readonly input here…" disabled><br/>
+
+            <label for="native">民族：</label>
+            <input id="native" class="native" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stdnative" disabled><br/>
+
+            <label for="classNo">班级：</label>
+            <input id="classNo" class="classNo" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.classNo" disabled><br/>
+
+            <label for="stustatus">状态：</label>
+            <input id="stustatus" class="stustatus" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stustatus" disabled><br/>
+
+            <label for="stuPart">系别：</label>
+            <input id="stuPart" class="stuPart" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stuPart" disabled><br/>
+
+
+
+        </fieldset>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" >修改基本信息</button>
+    </table>
+    </div>
+
+
+    <!-- 编辑窗口 1-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">修改基本信息</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="id">学号：</label>
+                    <input type="text" id="id2" class="id" placeholder="Disabled input" ng-model="baseinfo.data.studentNo" disabled><br/>
+
+
+                    <label for="name">姓名：</label>
+                    <input id="name2" class="name" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.studentName" disabled><br/>
+
+                    <label for="sex">性别：</label>
+                    <input id="sex2" class="sex" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.sex" disabled><br/>
+
+                    <label for="birthday">生日：</label>
+                    <input id="birthday2" class="birthday" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.birthday"><br/>
+
+                    <label for="native">民族：</label>
+                    <input id="native2" class="native" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stdnative"><br/>
+
+                    <label for="classNo">班级：</label>
+                    <input id="classNo2" class="classNo" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.classNo"><br/>
+
+                    <label for="stustatus">状态：</label>
+                    <input id="stustatus2" class="stustatus" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stustatus" disabled><br/>
+
+                    <label for="stuPart">系别：</label>
+                    <input id="stuPart2" class="stuPart" type="text" placeholder="Readonly input here…" ng-model="baseinfo.data.stuPart"><br/>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 编辑窗口2 -->
+<div class="modal fade" id="editModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel2">填写补录信息</h3>
+            </div>
+            <div  style="margin-left: 20px;">
+                <label for="household">&nbsp;&nbsp;&nbsp;&nbsp;籍&nbsp;&nbsp;贯：</label>
+                <input id="household" class="household" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.household" ><br/>
+
+                <label for="identify2">&nbsp;&nbsp;&nbsp;身份证：</label>
+                <input id="identify2" class="identify2" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.sid" ><br/>
+
+                <label for="birthplace">&nbsp;&nbsp;&nbsp;出生地：</label>
+                <input id="birthplace" class="identify2" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.birthplace" ><br/>
+
+
+                <label for="now_register">&nbsp;&nbsp;&nbsp;现住址：</label>
+                <input id="now_register" class="now_register" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.now_register" ><br/>
+
+                <label for="selphone2">个人电话：</label>
+                <input id="selphone2" class="selphone" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.selfphone" ><br/>
+
+                <label for="mom_name">母亲姓名：</label>
+                <input id="mom_name" class="mom_name" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.mother_name"  ><br/>
+
+                <label for="momphone2">母亲电话：</label>
+                <input id="momphone2" class="momphone2" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.mother_call"  ><br/>
+
+                <label for="dad_name">父亲姓名：</label>
+                <input id="dad_name" class="dad_name" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.father_name" ><br/>
+
+                <label for="dadphone2">父亲电话：</label>
+                <input id="dadphone2" class="dadphone2" type="text" placeholder="Readonly input here…" ng-model="supplyEntity.father_call" ><br/>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save2()">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- 编辑窗口3-->
+<div class="modal fade" id="editModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel3">查看补录信息</h3>
+            </div>
+            <div  style="margin-left: 20px;">
+                <label for="household3">&nbsp;&nbsp;&nbsp;&nbsp;籍&nbsp;&nbsp;贯：</label>
+                <input id="household3" class="household3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.household"><br/>
+
+                <label for="sid">&nbsp;&nbsp;&nbsp;身份证：</label>
+                <input id="sid" class="sid" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.sid"><br/>
+
+                <label for="birthplace3">&nbsp;&nbsp;&nbsp;出生地：</label>
+                <input id="birthplace3" class="sid" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.birthplace"><br/>
+
+
+                <label for="now_register3">&nbsp;&nbsp;&nbsp;现住址：</label>
+                <input id="now_register3" class="now_register3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.now_register" ><br/>
+
+                <label for="selphone3">个人电话：</label>
+                <input id="selphone3" class="selphone3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.selfphone"><br/>
+
+                <label for="mom_name3">母亲姓名：</label>
+                <input id="mom_name3" class="mom_name" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.mother_name"><br/>
+
+                <label for="momphone3">母亲电话：</label>
+                <input id="momphone3" class="momphone3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.mother_call"><br/>
+
+                <label for="dad_name3">父亲姓名：</label>
+                <input id="dad_name3" class="dad_name" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.father_name"><br/>
+
+                <label for="dadphone3">父亲电话：</label>
+                <input id="dadphone3" class="dadphone3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.father_call"><br/>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="modifySupplyInfo(supplyinfo.data.household ,supplyinfo.data.sid, supplyinfo.data.birthplace, supplyinfo.data.now_register,supplyinfo.data.selfphone,supplyinfo.data.mother_name, supplyinfo.data.mother_call, supplyinfo.data.father_name, supplyinfo.data.father_call)">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+
+
+
+<script type="text/javascript">
+    var app=angular.module('son1',[]);
+    app.controller('studentController',function ($scope,$http) {
+//获取单个学生信息
+        $scope.findBYID = function () {
+            document.getElementById("showselect").style.display = 'block' ;
+            $http.get('http://localhost:8888/zxq/student/get/1001').success(function (data) {
+                $scope.baseinfo = data;
+                alert("欢迎"+baseinfo.data.studentNo);
+            })
+        }
+
+        //保存信息,修改信息
+        $scope.save=function(){
+            $http.post('http://localhost:15000/zxq/update',$scope.baseinfo).success(function (data) {
+                if(data.code=200){
+                    $scope.findBYID();
+                    $scope.baseinfo={};
+                    alert(data.message);
+                }else{
+                    alert(data.message);
+                    $scope.baseinfo={};
+                }
+
+            })
+        }
+
+
+
+        //获取补录信息
+        $scope.findSUPPLY = function (sid) {
+            $http.get('http://localhost:8888/zxq/SupplyInfo/supget/'+sid).success(function (data) {
+                if(data.code==200){
+                    $scope.supplyinfo = data;
+                }
+                alert(data.msg);
+            })
+        }
+        //新增修改补录信息
+        // household,sid,birthplace,register,selfphone,mom,momphone,dad,dadphone
+        $scope.save2=function(){
+            $http.post('http://localhost:15000/zxq/SupplyInfo/supinsert',$scope.supplyEntity).success(function (data) {
+                if(data.code=200){
+                    $scope.findSUPPLY($scope.supplyEntity.sid);
+                    alert(data.msg)
+                }else{
+                    alert(data.message);
+                    $scope.baseinfo={};
+                }
+
+            })
+        }
+        $scope.modifySupplyInfo=function (household,sid, birthplace, now_register,selfphone, mother_name, mother_call, father_name, father_call) {
+            $http.get("http://localhost:8888/zxq/SupplyInfo/modifySupplyInfo?household="+household+"&sid="+sid+"&birthplace="+birthplace+"&now_register="+now_register+"&selfphone="+selfphone+"&mother_name="+mother_name+"&mother_call="+mother_call+"&father_name="+father_name+"&father_call="+father_call).success(function (data) {
+                $scope.findSUPPLY(sid);
+                alert(data.msg);
+                alert("modify success")
+            })
+        }
+
+
+    })
+
+    //切换div
+    // function change_div(id){
+    //     if (id == 'base' )
+    //     {
+    //         document.getElementById("supply").style.display = 'none' ;
+    //         document.getElementById("base").style.display = 'block' ;
+    //     }
+    //     else
+    //     {
+    //         document.getElementById("base").style.display = 'none' ;
+    //         document.getElementById("supply").style.display = 'block' ;
+    //     }
+    //
+    //
+    //
+    // }
+
+
+
+
+</script>
+</html>

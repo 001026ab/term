@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xiuqin.springcloud.Dao.studentDao">          <!--namespace对应Dao接口文件-->
+
+
+    <!--这四个属性很必要有，id映射Dao接口的方法名，parameterType映射Dao层方法的传入参数类型，useG=true表示执行后返回结果数，keyP主键-->
+    <update id="update">
+        update studentinfo 
+        <set> 
+         <if test="stdnative!=null">
+        stdnative=#{stdnative},
+         </if>
+         <if test="studentName!=null">
+         studentName=#{studentName},
+         </if>
+         <if test="classNo!=null">
+         classNo=#{classNo},
+         </if>
+         <if test="birthday!=null">
+         birthday=#{birthday}
+         </if>
+         <if test="stuPart!=null">
+         stuPart=#{stuPart}
+         </if>
+        </set>
+        where studentNo=#{studentNo};
+    </update>
+
+<!--设置返回结果集-->
+<!--    有时候数据库字段与实体类字段名不一样，需要映射,type对应返回的实体类路径，id对应select中的resultMap值，这只做了几个参考-->
+    <resultMap id="baseResultMap" type="xiuqin.springcloud.entities.Student">
+        <id column="studentNo" property="studentNo" jdbcType="INTEGER"/>
+        <id column="studentName" property="studentName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getStudenInfoById" parameterType="student" resultMap="baseResultMap">
+        select * from studentinfo where studentNo=#{studentNo};         <!--{}里是param别名-->
+    </select>
+
+<!-- supplyinfo增加   -->
+    <insert id="insertSupply" parameterType="SupplyInfo">
+        insert into supply_info values(
+        #{household},#{sid},
+        #{birthplace},#{now_register},
+        #{selfphone},#{mother_name},
+        #{mother_call},#{father_name},
+        #{father_call});
+    </insert>
+
+<!-- supplyinfo 查询   -->
+    <resultMap id="SupplyResultMap" type="xiuqin.springcloud.entities.SupplyInfo">
+        <id column="sid" property="sid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectSupply" parameterType="String" resultMap="SupplyResultMap">
+        select * from supply_info where sid =#{sid};
+    </select>
+    <!--{花括号}里是param别名-->
+
+    <!--supplyinfo 修改跟新-->
+    <update id="updateSupply" parameterType="xiuqin.springcloud.entities.SupplyInfo" >
+        update supply_info
+        <set>
+            <if test="household!=null">
+                household=#{household},
+            </if>
+            <if test="sid!=null">
+                sid=#{sid},
+            </if>
+            <if test="birthplace!=null">
+                birthplace=#{birthplace},
+            </if>
+            <if test="now_register!=null">
+                now_register=#{now_register},
+            </if>
+            <if test="selfphone!=null">
+                selfphone=#{selfphone},
+            </if>
+            <if test="mother_name!=null">
+                mother_name=#{mother_name},
+            </if>
+            <if test="mother_call!=null">
+                mother_call=#{mother_call},
+            </if>
+            <if test="father_name!=null">
+                father_name=#{father_name},
+            </if>
+            <if test="father_name!=null">
+                father_call=#{father_call}
+            </if>
+        </set>
+        where sid=#{sid};
+    </update>
+    <select id="selectFromSupply" parameterType="String" resultMap="SupplyResultMap">
+        select * from supply_info where sid =#{sid};
+    </select>
+
+
+</mapper>
