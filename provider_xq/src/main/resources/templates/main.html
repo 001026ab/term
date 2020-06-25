@@ -23,14 +23,15 @@
 <br/>
 <!--    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="findBYID()">保存</button>-->
 
-<div id="base" align="center" >
+<div id="base" >
     <a href="" class="btn btn-primary btn-lg active" role="button" data-target="center" ng-click="findBYID()" id="look">点击查看</a>
     <button class="btn btn-primary btn-lg active" role="button" data-toggle="modal" data-target="#editModal2">增加补录信息</button>
-    <button class="btn btn-primary btn-lg active" role="button" data-toggle="modal" data-target="#editModal3">查看补录信息</button>
+    <button class="btn btn-primary btn-lg active" role="button" data-toggle="modal" data-target="#editModal3">查看修改补录</button>
+    <br/>
 
 <!--    <button class="btn btn-success"  aria-hidden="true" ng-click="findBYID()">jjjj</button>-->
 
-    <div id="showselect" style="display: none">
+    <div id="showselect" style="display: none" align="center">
     <table align="center">
 
         <fieldset>
@@ -170,14 +171,14 @@
         <div class="modal-content">
             <div class="modal-header" >
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel3">查看补录信息</h3>
+                <h3 id="myModalLabel3">查看修改补录信息</h3>
             </div>
             <div  style="margin-left: 20px;">
                 <label for="household3">&nbsp;&nbsp;&nbsp;&nbsp;籍&nbsp;&nbsp;贯：</label>
                 <input id="household3" class="household3" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.household"><br/>
 
                 <label for="sid">&nbsp;&nbsp;&nbsp;身份证：</label>
-                <input id="sid" class="sid" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.sid"><br/>
+                <input id="sid" class="sid" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.sid" disabled><br/>
 
                 <label for="birthplace3">&nbsp;&nbsp;&nbsp;出生地：</label>
                 <input id="birthplace3" class="sid" type="text" placeholder="Readonly input here…" ng-model="supplyinfo.data.birthplace"><br/>
@@ -203,7 +204,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="modifySupplyInfo(supplyinfo.data.household ,supplyinfo.data.sid, supplyinfo.data.birthplace, supplyinfo.data.now_register,supplyinfo.data.selfphone,supplyinfo.data.mother_name, supplyinfo.data.mother_call, supplyinfo.data.father_name, supplyinfo.data.father_call)">保存</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="modifySupplyInfo(supplyinfo.data.household ,supplyinfo.data.sid, supplyinfo.data.birthplace, supplyinfo.data.now_register,supplyinfo.data.selfphone,supplyinfo.data.mother_name, supplyinfo.data.mother_call, supplyinfo.data.father_name, supplyinfo.data.father_call)">保存修改</button>
                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" ng-click="clrEntity()">关闭</button>
             </div>
         </div>
