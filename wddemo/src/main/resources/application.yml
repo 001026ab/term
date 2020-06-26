@@ -1,9 +1,28 @@
+server:
+  port: 14000
+
 spring:
+  application:
+    name: wd-cloud
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-  application:
-    name: wd-cloud
-server:
-  port: 14000
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/clouddemo?useUnicode=true&characterEncoding-utr-8&useSSL=false
+    username: root
+    password: 123456
+  thymeleaf:
+    encoding: UTF-8
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    servlet:
+      content-type: text/html
+    cache: false
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloud.entities
